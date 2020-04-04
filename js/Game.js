@@ -42,6 +42,7 @@ class Game {
     textSize(30);
     text("Game Start", 120, 100)
     Player.getPlayerInfo();
+    player.getCarsAtEnd();
 
     if(allPlayers !== undefined){
       var index = 0;
@@ -73,8 +74,11 @@ class Game {
       player.distance +=50
       player.update();
     }
-    if(player.distance>3850){
+    if(player.distance === 3800){
       gameState = 2;
+      player.rank += 1;
+      Player.updateCarsAtEnd(player.rank);
+      console.log(player.rank);
     }
     drawSprites();
   }
